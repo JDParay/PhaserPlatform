@@ -4,14 +4,17 @@ class CreditsScene extends Phaser.Scene {
     }
 
     create() {
-        this.add.text(500, 150, 'CREDITS', { fontSize: '40px', fill: '#ffffff' }).setOrigin(0.5);
-        this.add.text(500, 250, 'Developer: Jeko Damiel Paray\nSection: A224\nprogram: 2ndYR - EMC', {
-            fontSize: '24px',
-            fill: '#ffffff',
+        this.add.image(0, 0, "credits").setOrigin(0, 0).setScale(1, 1);
+
+        this.add.text(500, 160, 'CREDITS', { fontSize: '40px', fontStyle: 'bold', fill: '#006400' }).setOrigin(0.5);
+        this.add.text(500, 270, 'Developer: Jeko Damiel Paray\n\nSection: A224\n\nprogram: BSEMC', {
+            font: '24px Arial',
+            fontStyle: 'bold',
+            fill: '#006400',
             align: 'center'
         }).setOrigin(0.5);
 
-        const backBtn = this.add.text(500, 400, '⬅ BACK', { fontSize: '30px', fill: '#00ffff' }).setOrigin(0.5).setInteractive();
-        backBtn.on('pointerdown', () => this.scene.start('MainMenuScene'));
+        const backBtn = this.add.text(550, 400, '⬅ BACK', { fontSize: '30px', fontStyle: 'bold', fill: '#8B8000' }).setOrigin(0.5).setInteractive();
+        backBtn.on('pointerdown', () => this.scene.start('MenuScene'));
     }
 }

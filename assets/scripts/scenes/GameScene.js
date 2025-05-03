@@ -15,6 +15,14 @@ class GameScene extends Phaser.Scene {
         this.cursors = this.input.keyboard.createCursorKeys();
 
         this.physics.add.overlap(this.player, this.goal, this.winGame, null, this);
+
+        let bgm = this.sound.get('bgm');
+        if (!bgm) {
+            bgm = this.sound.add('bgm', { loop: true, volume: 0.5 });
+            bgm.play();
+        } else if (!bgm.isPlaying) {
+            bgm.play();
+        }
     }
 
     update() {
@@ -32,6 +40,6 @@ class GameScene extends Phaser.Scene {
         this.score += 100;
         this.textScore.setText("Score: " + this.score);
         this.goal.disableBody(true, true);
-        this.scene.start('WinScene');
+        this.scene.start('WinScene', { score: this.score });
     }
 }
